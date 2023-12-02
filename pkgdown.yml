@@ -2,7 +2,7 @@ pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles: {}
-last_built: 2023-12-01T23:35Z
+last_built: 2023-12-02T04:51Z
 urls:
   reference: https://ricardo-semiao.github.io/vardiff/reference
   article: https://ricardo-semiao.github.io/vardiff/articles
