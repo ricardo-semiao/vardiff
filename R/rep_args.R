@@ -1,0 +1,24 @@
+#' Title
+#'
+#' @param k
+#' @param args
+#'
+#' @return
+#' @export
+#'
+#' @examples
+rep_args <- function(k, args) {
+  if (length(args) == 0) {
+    rep(list(list()), k)
+  } else {
+    purrr::imap(args, function(arg, name) {
+      if (is.list(arg) && length(arg) == k) {
+        purrr::set_names(arg, name)
+      } else {
+        rep(purrr::set_names(list(arg), name), k)
+      }
+    }) %>%
+      purrr::pmap(list) %>%
+      unname()
+  }
+}
