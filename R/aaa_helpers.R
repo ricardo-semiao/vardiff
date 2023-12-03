@@ -1,12 +1,3 @@
-#' Title
-#'
-#' @param k
-#' @param args
-#'
-#' @return
-#' @export
-#'
-#' @examples
 rep_args <- function(k, args) {
   if (length(args) == 0) {
     rep(list(list()), k)

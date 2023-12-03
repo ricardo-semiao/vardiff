@@ -40,14 +40,15 @@ map_causality <- function(
       function(test, args) {
         purrr::map(test, ~ round(purrr::reduce(.x[stats], c), star_round)) %>%
           purrr::reduce(rbind) %>%
-          tibble::as_tibble() %>%
+          tibble::as_tibble(.name_repair = "minimal") %>%
           dplyr::rename(
             `P-value` = dplyr::last_col(),
             !!!purrr::map(star_names, dplyr::any_of)
           ) %>%
           {inject(stargazer::stargazer(., summary = FALSE, !!!args))}
       })
+    invisible(result_causality)
+  } else {
+    result_causality
   }
-
-  result_causality
 }
