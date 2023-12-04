@@ -3,7 +3,6 @@
 #' @param data_each
 #' @param cols_each
 #' @param ...
-#' @param plot
 #'
 #' @return
 #'

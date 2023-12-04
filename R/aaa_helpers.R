@@ -13,3 +13,11 @@ rep_args <- function(k, args) {
       unname()
   }
 }
+
+search_map <- function(.l, .cond, .f) {
+  if (.cond(.l)) {
+    return(purrr::map(.l, ~ search_map(.x, .cond, .f)))
+  } else {
+    return(.f(.l))
+  }
+}

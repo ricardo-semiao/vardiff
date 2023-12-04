@@ -21,7 +21,7 @@ mapvar_var <- function(
   cols_each <- cols_each %||% purrr::map(data_each, colnames)
   var_args <- rep_args(k, list(...))
 
-  exogen_each <- map_exogen(data_each, exogen_fun, exogen_args, k)
+  exogen_each <- mapvar_exogen(data_each, exogen_fun, exogen_args, k)
 
   purrr::pmap(list(data_each, p_each, exogen_each, var_args, cols_each),
     function(data, p, exogen, args, cols) {
@@ -48,7 +48,7 @@ mapvar_var <- function(
 #' @examples
 #'
 #' @export
-mapvar_varselect <- function(
+mapvar_select <- function(
     data_each, p_each, cols_each = NULL,
     ..., criteria = c("AIC", "HQ", "SC", "FPE"),
     exogen_fun = NULL, exogen_args = NULL,
@@ -59,7 +59,7 @@ mapvar_varselect <- function(
   cols_each <- cols_each %||% purrr::map(data_each, colnames)
 
   var_args <- rep_args(k, list(...))
-  exogen_list <- map_exogen(data, exogen_fun, exogen_args, k)
+  exogen_list <- mapvar_exogen(data, exogen_fun, exogen_args, k)
 
   result <- purrr::pmap(list(data_each, p_each, exogen_list, var_args, cols_each),
                         function(data, p, exogen, args, cols) {
@@ -91,7 +91,8 @@ mapvar_varselect <- function(
 #' @examples
 #'
 #' @export
-ggvar_select_patch <- function(select_each, model_labs = names(select_each), ...) {
+ggvar_select_patch <- function(
+    select_each, model_labs = names(select_each), ...) {
   criteria <- gsub("\\(n\\)", "", names(select_each[[1]]$selection))
 
   plots <- purrr::map2(select_each, model_labs, function(x, name) {

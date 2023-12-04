@@ -4,10 +4,10 @@
 \alias{split_cols}
 \title{Title}
 \usage{
-split_cols(vars, k, rmv_each, mnt_each, exact = FALSE)
+split_cols(vars, k, rmv_each = "", mnt_each = ".", exact = FALSE)
 }
 \arguments{
-\item{mnt_each}{}
+\item{exact}{}
 }
 \description{
 Title

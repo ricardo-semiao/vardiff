@@ -2,8 +2,8 @@
 #'
 #' @param data
 #' @param splits_each
-#' @param mod_names
 #' @param cols_each
+#' @param splits_names
 #'
 #' @return
 #'
@@ -11,13 +11,13 @@
 #'
 #' @export
 split_data <- function(
-    data, splits_each, cols_each = NULL, mod_names = NULL) {
+    data, splits_each, cols_each = NULL, splits_names = NULL) {
   # Setup:
   n <- nrow(data)
   k <- length(splits_each)
   splits_each <- purrr::map(splits_each, ~ c(.x, n)[1:2])
   cols_each <- cols_each %||% rep(list(colnames(data)), k)
-  mod_names <- mod_names %||% paste0("model", 1:k)
+  splits_names <- splits_names %||% paste0("model", 1:k)
 
   if (length(cols_each) != k) {
     abort("`cols_each` must have `length(splits_each)` elements")
@@ -26,10 +26,12 @@ split_data <- function(
     abort("All elements of `splits_each` must be within `1:nrow(data)`")
   }
 
+  data <- tibble::as_tibble(data)
+
   result <- purrr::map2(splits_each, cols_each, function(splits, cols) {
     dplyr::select(data[splits[1]:splits[2],], dplyr::all_of(cols))
   }) %>%
-    purrr::set_names(mod_names)
+    purrr::set_names(splits_names)
 
   result
 }
@@ -41,12 +43,14 @@ split_data <- function(
 #' @param k
 #' @param rmv_each
 #' @param mnt_each
+#' @param exact
 #'
 #' @return
 #' @export
 #'
 #' @examples
-split_cols <- function(vars, k, rmv_each, mnt_each, exact = FALSE) {
+split_cols <- function(
+    vars, k, rmv_each = "", mnt_each = ".", exact = FALSE) {
   exatify <- function(x, exact) if (exact) paste0("$", x, "^") else x
 
   rmv_each <- if (length(rmv_each) == 1) rep(rmv_each, k) else rmv_each

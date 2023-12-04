@@ -1,17 +1,16 @@
 #' Title
 #'
 #' @param data_each
+#' @param exogen_fun
+#' @param exogen_args
 #' @param k
-#' @param fun
-#' @param args
 #'
 #' @return
 #'
 #' @examples
 #'
 #' @export
-mapvar_exogen <- function(
-    data_each, fun = NULL, args = NULL, k = length(data_each)) {
+mapvar_exogen <- function(data_each, fun = NULL, args = NULL, k = length(data_each)) {
   if (is.null(fun)) {
     rep(list(NULL), k)
   } else {

@@ -4,10 +4,10 @@
 \alias{split_data}
 \title{Title}
 \usage{
-split_data(data, splits_each, cols_each = NULL, mod_names = NULL)
+split_data(data, splits_each, cols_each = NULL, splits_names = NULL)
 }
 \arguments{
-\item{cols_each}{}
+\item{splits_names}{}
 }
 \description{
 Title
