@@ -1,14 +1,14 @@
 Package: vardiff
-Title: What the Package Does (One Line, Title Case)
+Title: Creating and Comparing Multiple VAR Models
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person("Ricardo", "Semião", , "ricardo.semiao@outlook.com", role = c("aut", "cre"))
+Maintainer: Ricardo Semião e Castro <ricardo.semiao@outlook.com>
+Description: A package to create and work with multiple VAR models. Split data,
+    vizualise the splitted variables, create and diagnose var models for each
+    split, then compare results based on IRF's, FEVD's, CF's, and causality
+    tests.
 License: MIT + file LICENSE
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
 URL: https://github.com/ricardo-semiao/vardiff, https://ricardo-semiao.github.io/vardiff/
 BugReports: https://github.com/ricardo-semiao/vardiff/issues
 Suggests: 
@@ -16,7 +16,6 @@ Suggests:
     testthat (>= 3.0.0),
     varutils (>= 0.1.0),
     vdiffr
-Config/testthat/edition: 3
 Imports: 
     dplyr (>= 1.1.0),
     ggplot2 (>= 3.4.0),
@@ -26,3 +25,7 @@ Imports:
     tibble (>= 3.2.0),
     tidyr (>= 1.3.0),
     vars (>= 1.5.0)
+Config/testthat/edition: 3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
