@@ -11,10 +11,11 @@
 #' @param ...
 #'
 #' @return
-#' @export
 #'
 #' @examples
-map_causality <- function(
+#'
+#' @export
+mapvar_causality <- function(
     mods, cause = NULL,
     vcov_fun = NULL, vcov_args = list(),
     star = FALSE, star_args = list(), star_names = list(), star_round = 3,
