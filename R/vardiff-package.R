@@ -2,6 +2,7 @@
 "_PACKAGE"
 
 ## usethis namespace: start
+#' @importFrom cli cli_abort
 #' @importFrom ggplot2 aes
 #' @importFrom ggplot2 ggplot
 #' @importFrom ggplot2 vars

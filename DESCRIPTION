@@ -17,6 +17,7 @@ Suggests:
     varutils (>= 0.1.0),
     vdiffr
 Imports: 
+    cli,
     dplyr (>= 1.1.0),
     ggplot2 (>= 3.4.0),
     magrittr (>= 2.0.0),

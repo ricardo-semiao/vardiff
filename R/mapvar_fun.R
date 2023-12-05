@@ -7,7 +7,7 @@ get_fun <- function(what, cols = NULL) {
 
   summaries <- c(
     "lik", "roots", "covres", "corres", "obs", "r.squared", "adj.r.squared",
-    "fstatistic", "cov.unscalred"
+    "fstatistic", "cov.unscaled"
   )
   tests <- c("stability", "arch", "normality", "serial")
   varutils <- c(
@@ -17,12 +17,14 @@ get_fun <- function(what, cols = NULL) {
   )
   opts <- c(summaries, tests, varutils)
 
-  if (!what %in% opts) abort(c(
-    "Invalid `what`. Use one of:",
-    "*" = "Summary elements to get: {summaries}",
-    "*" = "Tests to apply: {tests}",
-    "*" = "Varutils functions to plot: {varutils}"
-  ))
+  if (!what %in% opts) {
+    cli_abort(c(
+      "Invalid `what`. Use one of:",
+      "*" = "Summary elements to get: {summaries}",
+      "*" = "Tests to apply: {tests}",
+      "*" = "Varutils functions to plot: {varutils}"
+    ))
+  }
 
   switch(what,
          "lik" = \(x) summary(x)$logLik,
@@ -34,7 +36,7 @@ get_fun <- function(what, cols = NULL) {
          "r.squared" = \(x) purrr::map_dbl(get_summary(x), ~ .x$r.squared),
          "adj.r.squared" = \(x) purrr::map_dbl(get_summary(x), ~ .x$adj.r.squared),
          "fstatistic" = \(x) purrr::map_dfr(get_summary(x), ~ .x$fstatistic),
-         "cov.unscalred" = \(x) purrr::map(get_summary(x), ~ .x$cov.unscalred),
+         "cov.unscaled" = \(x) purrr::map(get_summary(x), ~ .x$cov.unscaled),
          "stability" = vars::stability,
          "arch" = vars::arch.test,
          "normality" = vars::normality.test,
