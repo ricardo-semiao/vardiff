@@ -2,23 +2,52 @@
 % Please edit documentation in R/ggvar_values_shaded.R
 \name{ggvar_values_shaded}
 \alias{ggvar_values_shaded}
-\title{Title}
+\title{Plot historic values with shaded splits}
 \usage{
 ggvar_values_shaded(
   data,
   splits_each,
-  index,
+  ...,
+  index = NULL,
   cols = NULL,
   splits_names = NULL,
-  ...,
   colors = NULL,
   line_args = list(),
   facet_args = list()
 )
 }
 \arguments{
-\item{colors}{}
+\item{data}{A dataset (object coercible to data.frame) to plot historic
+values from.}
+
+\item{splits_each}{A list of numeric vectors with split points: \code{list(c(start1, end1), ...)}. Size one vectors are interpreted to have 'end' as \code{nrow(data)}.}
+
+\item{...}{Aditional arguments passed to \link[ggplot2]{geom_rect}.}
+
+\item{index}{A column name to be used as the x axis. Defaults to a numeric \\
+sequence.}
+
+\item{cols}{Variables to plot, passed to \link[varutils]{ggvar_values}.}
+
+\item{splits_names}{Names for the shading legend. Defaults to a numeric \\
+sequence.}
+
+\item{colors}{A vector of colors for each variable. Passed to \link[ggplot2]{scale_fill_manual}. See \code{vignette("colors", package = "varutils")}.}
+
+\item{line_args}{Aditional arguments passed to \link[ggplot2]{geom_line}.}
+
+\item{args_facet}{Aditional arguments passed to \link[ggplot2]{facet_wrap}.}
+}
+\value{
+A ggplot.
 }
 \description{
-Title
+Plots a faceted ggplot of historic values in \code{data}, but shades each
+split as defined by \code{splits_each}.
+}
+\examples{
+data <- EuStockMarkets
+splits_each <- list(c(1, 620), c(621, 1240), c(1241))
+ggvar_values_shaded(data, splits_each, colors = "RColorBrewer::Dark2")
+
 }

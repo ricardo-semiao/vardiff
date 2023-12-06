@@ -2,13 +2,27 @@
 % Please edit documentation in R/split_data.R
 \name{split_data}
 \alias{split_data}
-\title{Title}
+\title{Split data for modelling}
 \usage{
 split_data(data, splits_each, cols_each = NULL, splits_names = NULL)
 }
 \arguments{
-\item{splits_names}{}
+\item{data}{A dataset (object coercible to data.frame) to split.}
+
+\item{splits_each}{A list of numeric vectors with split points: \code{list(c(start1, end1), ...)}. Size one vectors are interpreted to have 'end' as \code{nrow(data)}.}
+
+\item{cols_each}{A list of columns to consider for each data split. Defaults to everything.}
+
+\item{splits_names}{Names for each split, default to "model1", "model2", ...}
+}
+\value{
+A list with each data split (length = \code{length(splits_each)}).
 }
 \description{
-Title
+Split a dataset in custom points to later create a VAR model with each split.
+}
+\examples{
+splits_each <- list(c(1, 620), c(621, 1240), c(1241))
+split_data(EuStockMarkets, splits_each)
+
 }

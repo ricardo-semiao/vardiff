@@ -1,7 +1,29 @@
+#' In construction...
+#'
+#' @param mod_each
+#' @param n.ahead
+#'
+#' @return
+#' @export
+#'
+#' @examples
 mapvar_fevd <- function(mod_each, n.ahead = 10) {
-  purrr:::map(mod_each, ~ vars::fevd(.x, n.ahead))
+  purrr::map(mod_each, ~ vars::fevd(.x, n.ahead))
 }
 
+#' In construction...
+#'
+#' @param fevd_each
+#' @param response
+#' @param baseline
+#' @param plot
+#' @param bar_args
+#' @param facet_args
+#'
+#' @return
+#' @export
+#'
+#' @examples
 diff_fevd <- function(
     fevd_each, response = NULL, baseline = c(1, 1),
     plot = TRUE,

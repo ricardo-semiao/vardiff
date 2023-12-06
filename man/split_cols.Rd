@@ -2,13 +2,51 @@
 % Please edit documentation in R/split_data.R
 \name{split_cols}
 \alias{split_cols}
-\title{Title}
+\title{Define columns to use in each model}
 \usage{
-split_cols(vars, k, rmv_each = "", mnt_each = ".", exact = FALSE)
+split_cols(
+  cols_names,
+  mnt_each = ".",
+  rmv_each = "",
+  k = NULL,
+  prio = "mnt",
+  drop = FALSE,
+  exact = FALSE
+)
 }
 \arguments{
-\item{exact}{}
+\item{cols_names}{A character vector of column names in your data.}
+
+\item{k}{The number of splits being used. Defaults to the max length between
+\code{mnt_each} and \code{rmv_each}, but pass it manually if using theese
+arguments in their unit length versions.}
+
+\item{prio}{Which of \code{mnt_each} (\code{"mnt"}, the default) and
+\code{rmv_each} (\code{"rmv"}) should take precedence in the matching.}
+
+\item{drop}{Should unmatched columns be dropped? The default is \code{FALSE}
+for keeping the columns.}
+
+\item{exact}{Should \code{mnt_each} and \code{rmv_each} be interpreted as
+literal strings? The default is \code{FALSE} for REGEX matching.}
+}
+\value{
+A list with each column vector (length = \code{k}).
 }
 \description{
-Title
+Create a list of columns to used in each VAR model, using REGEX or exact
+matching. The logic works as below:
+\itemize{
+\item \code{mnt_each} and \code{rmv_each} are to be lists of \code{k} character
+vectors, each with matches to look for maintaining or removing columns
+(respectively).
+\item \code{prio} defines if only columns not matched by \code{mnt_each} should
+be considered for \code{rmv_each} (the default), or the other way around.
+\item \code{drop} defines what should be done with unmatched cols, kept (the
+default), or dropped.
+}
+}
+\examples{
+split_cols(c("DAX", "SMI", "CAC", "FTSE"), list(c("CAC", "DAX")), "SMI")
+
 }

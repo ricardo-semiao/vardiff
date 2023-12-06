@@ -2,7 +2,7 @@
 % Please edit documentation in R/mapvar_var.R
 \name{ggvar_select_patch}
 \alias{ggvar_select_patch}
-\title{Title}
+\title{In construction...}
 \usage{
 ggvar_select_patch(select_each, model_labs = names(select_each), ...)
 }
@@ -10,5 +10,5 @@ ggvar_select_patch(select_each, model_labs = names(select_each), ...)
 \item{...}{}
 }
 \description{
-Title
+In construction...
 }

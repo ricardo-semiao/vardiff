@@ -1,4 +1,4 @@
-#' Title
+#' In construction...
 #'
 #' @param data_each
 #' @param p_each
@@ -31,7 +31,7 @@ mapvar_var <- function(
 }
 
 
-#' Title
+#' In construction...
 #'
 #' @param data_each
 #' @param p_each
@@ -80,7 +80,7 @@ mapvar_select <- function(
 }
 
 
-#' Title
+#' In construction...
 #'
 #' @param select_each
 #' @param model_labs

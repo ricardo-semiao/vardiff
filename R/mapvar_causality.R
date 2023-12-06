@@ -1,6 +1,5 @@
-#' Title
+#' In construction...
 #'
-#' @param mods
 #' @param cause
 #' @param ...
 #' @param vcov_fun
@@ -9,6 +8,7 @@
 #' @param star_args
 #' @param star_names
 #' @param star_round
+#' @param mod_each
 #'
 #' @return
 #'

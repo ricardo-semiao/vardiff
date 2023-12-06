@@ -9,9 +9,46 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/vardiff)](https://CRAN.R-project.org/package=vardiff)
+[![R-CMD-check](https://github.com/ricardo-semiao/vardiff/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ricardo-semiao/vardiff/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of vardiff is to …
+The vardiff R package is being developed to provide functions to create,
+analise, and get results from multiple Vector Auto-Regressive models at
+once, including comparing one against the others. It works specifically
+with the [vars](https://cran.r-project.org/web/packages/vars/index.html)
+and [varutils](https://ricardo-semiao.github.io/varutils/) packages.
+
+**Disclaimer:** this package is in the early most stage of life. It
+hasn’t been thoroughly tested and can present several bugs. I don’t
+recommend using it for large-scale projects, yet.
+
+Please report any problems in my email (below) or as a github issue.
+Thank you!
+
+Author: Ricardo Semião e Castro (ricardo.semiao@outlook).
+
+## Introduction
+
+The `split_cols()` and `split_data()` functions define a list of
+sub-datasets with different slicing and variables.
+
+The nature of the splits can be analised an compared using the functions
+`ggvar_values_shaded()` (historic values with split shading),
+`mapvar_acf()`, and `mapvar_ccf()` (comparing the auto- and cross-
+correlation functions of variables between splits).
+
+Then, the var models can be fitted with `mapvar_var()`, using custom
+exogenous variables with `mapvar_exogen()`, and choosing lags with
+`ggvar_select_patch()`. Diagnostics of each model can be seen using
+`mapvar_fun()`, that returns pretty tables for summary statistics and
+varutils plots.
+
+Lastly, the results can be seen and diff’ed using the
+`mapvar_causality()` (Granger tests), `mapvar_irf()` + `diff_irf()`, and
+`mapvar_fevd()` + `diff_fevd()`.
+
+In the future, I intent to add functions for creating and diff’ing
+counterfactuals, and expand the package to other VAR-like objects.
 
 ## Installation
 
@@ -23,35 +60,32 @@ You can install the development version of vardiff from
 devtools::install_github("ricardo-semiao/vardiff")
 ```
 
-## Example
+## Upcoming changes
 
-This is a basic example which shows you how to solve a common problem:
+- Finish building functions:
+  - Finish the “setup” suite for functions.
+  - Solve tidyselect R CMD check notes.
+- Add tests with testthat and vdiffr.
+- Start using rlang and glue APIs wherever possible.
+- Give more info in help pages:
+  - Give hints on how to work with results.
+  - Direct to used methods like “see: ?vars:::predict”.
 
-``` r
-library(vardiff)
-## basic example code
-```
+Additional:
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+- Add package data and custom examples
+- Solve some less important lintr and styler notes.
+- Study importing whole rlang, ggplot2, and purrr.
+- Add titles to patchworks plots
 
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
+## Aditional informations
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.
+This package:
 
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+- Follows the [tydiverse style guide](https://style.tidyverse.org/).
+  - Using the [styler](https://styler.r-lib.org/) and
+    [lintr](https://lintr.r-lib.org/) packages for style consistency.
+- Will use [testthat](https://testthat.r-lib.org/) and
+  [vdiffr](https://vdiffr.r-lib.org/) for automate tests.
+- Uses [rlang](https://rlang.r-lib.org/) frameworks for *tidy eval* and
+  *rlang errors*.

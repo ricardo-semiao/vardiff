@@ -1,13 +1,24 @@
+#' In construction...
+#'
+#' @param mod_each
+#' @param ...
+#' @param unit
+#' @param mult
+#'
+#' @return
+#' @export
+#'
+#' @examples
 mapvar_irf <- function(mod_each, ..., unit = FALSE, mult = 1) {
   k <- length(mod_each)
   fun_args <- rep_args(k, list(...))
 
-  result <- purrr:::map2(mod_each, fun_args,
+  result <- purrr::map2(mod_each, fun_args,
     \(x, args) inject(vars::irf(x, !!!args))
   )
 
   if (unit) {
-    purrr:::map2(result, mod_each, function(x, mod) {
+    purrr::map2(result, mod_each, function(x, mod) {
       sds <- purrr::map_dbl(mod$datamat[1:mod$K], sd)
       x[1:3] <- purrr::map(x[1:3], \(col) purrr::map2(col, sds, ~ .x*mult/.y))
       x
@@ -17,6 +28,21 @@ mapvar_irf <- function(mod_each, ..., unit = FALSE, mult = 1) {
   }
 }
 
+#' In construction...
+#'
+#' @param irf_each
+#' @param response
+#' @param impulse
+#' @param baseline
+#' @param line_args
+#' @param ribbon_args
+#' @param hline_args
+#' @param facet_args
+#'
+#' @return
+#' @export
+#'
+#' @examples
 diff_irf <- function(
     irf_each, response, impulse, baseline = 1,
     line_args = list(),

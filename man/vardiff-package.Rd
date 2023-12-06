@@ -4,9 +4,9 @@
 \name{vardiff-package}
 \alias{vardiff}
 \alias{vardiff-package}
-\title{vardiff: What the Package Does (One Line, Title Case)}
+\title{vardiff: Creating and Comparing Multiple VAR Models}
 \description{
-What the package does (one paragraph).
+A package to create and work with multiple VAR models. Split data, vizualise the splitted variables, create and diagnose var models for each split, then compare results based on IRF's, FEVD's, CF's, and causality tests.
 }
 \seealso{
 Useful links:
@@ -18,7 +18,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
+\strong{Maintainer}: Ricardo Semião \email{ricardo.semiao@outlook.com}
 
 }
 \keyword{internal}

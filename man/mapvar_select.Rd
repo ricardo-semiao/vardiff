@@ -2,7 +2,7 @@
 % Please edit documentation in R/mapvar_var.R
 \name{mapvar_select}
 \alias{mapvar_select}
-\title{Title}
+\title{In construction...}
 \usage{
 mapvar_select(
   data_each,
@@ -20,5 +20,5 @@ mapvar_select(
 \item{...}{}
 }
 \description{
-Title
+In construction...
 }

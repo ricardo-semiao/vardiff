@@ -46,7 +46,7 @@ get_fun <- function(what, cols = NULL) {
 }
 
 
-#' Title
+#' In construction...
 #'
 #' @param x_each
 #' @param what
